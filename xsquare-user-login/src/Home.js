@@ -1,8 +1,9 @@
 import React from "react";
 import Cookies from "js-cookie";
+import { Message } from "semantic-ui-react";
 import Header from "./Header";
 
-const URL = "ws://localhost:3030";
+const URL = "ws://jayamvimal.tech:3030";
 
 class Home extends React.Component {
   ws = new WebSocket(URL);
@@ -13,6 +14,7 @@ class Home extends React.Component {
       authenticated: Cookies.get("authenticated"),
       logged_in_user: Cookies.get("logged_in_user"),
       invoked: false,
+      visible: true,
     };
   }
   componentWillMount() {
@@ -32,6 +34,7 @@ class Home extends React.Component {
             console.log("Setting state");
             this.setState({
               invoked: true,
+              visible: true,
             });
           }
         };
@@ -48,13 +51,20 @@ class Home extends React.Component {
     };
   }
 
+  handleDismiss = () => {
+    this.setState({ visible: false });
+  };
+
   renderNotification() {
-    return (
-      <div className="ui success message">
-        <i className="close icon"></i>
-        <div className="header">You are being invoked by Admin</div>
-      </div>
-    );
+    if (this.state.visible) {
+      return (
+        <Message
+          onDismiss={this.handleDismiss}
+          header="Notification from Admin!"
+          content="You are being invoked by Admin! Please contact admin@ysquare.com."
+        />
+      );
+    }
   }
 
   render() {

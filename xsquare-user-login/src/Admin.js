@@ -1,17 +1,16 @@
 import React from "react";
 import Cookies from "js-cookie";
-import { w3cwebsocket as W3CWebSocket } from "websocket";
 import api from "./api/api";
 import Header from "./Header";
 
-const URL = "ws://localhost:3030";
+const URL = "ws://jayamvimal.tech:3030";
 
 class Admin extends React.Component {
   ws = new WebSocket(URL);
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false,
+      authenticated: Cookies.get("authenticated"),
       admin: false,
       users: [],
     };
@@ -27,7 +26,6 @@ class Admin extends React.Component {
     const resp = await api.get("/user/all", {});
     this.setState({
       users: resp.data,
-      authenticated: Cookies.get("authenticated"),
       admin: Cookies.get("role") == "admin" ? true : false,
     });
   };
