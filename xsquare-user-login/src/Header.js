@@ -16,7 +16,7 @@ class Header extends React.Component {
               type="submit"
               onClick={this.onLogout}
             >
-              <i class="power off icon"></i>
+              <i className="power off icon"></i>
               Logout
             </button>
           </div>

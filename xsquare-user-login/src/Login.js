@@ -16,7 +16,9 @@ class Login extends React.Component {
   renderValidationErr = () => {
     if (this.state.validationErr) {
       return (
-        <div class="ui right pointing red basic label">{this.state.errMsg}</div>
+        <div className="ui right pointing red basic label">
+          {this.state.errMsg}
+        </div>
       );
     }
   };

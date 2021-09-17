@@ -26,7 +26,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 app.use("/user", userRouter);
-//suserdao.init();
+//userdao.init(); // One time for creating users
 
 readdirSync("./routes").map((r) => {
   //reading all middlewares in routes folder

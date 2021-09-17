@@ -50,9 +50,9 @@ class Home extends React.Component {
 
   renderNotification() {
     return (
-      <div class="ui success message">
-        <i class="close icon"></i>
-        <div class="header">You are being invoked by Admin</div>
+      <div className="ui success message">
+        <i className="close icon"></i>
+        <div className="header">You are being invoked by Admin</div>
       </div>
     );
   }
@@ -62,7 +62,7 @@ class Home extends React.Component {
       return (
         <div className="ui segment">
           <Header />
-          <h2>Welcome User!</h2>
+          <h2>Welcome {this.state.logged_in_user.split("@")[0]} !</h2>
           {this.state.invoked ? this.renderNotification() : null}
         </div>
       );

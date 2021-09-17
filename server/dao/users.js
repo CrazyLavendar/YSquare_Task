@@ -9,7 +9,7 @@ const init = async () => {
   await admin.save();
   for (let c = 1; c <= 5; c++) {
     let user = new User({
-      name: `user${c}@company.com`,
+      name: `user${c}@ysquare.com`,
       password: `user${c}`,
     });
     await user.save();
